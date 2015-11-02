@@ -1,0 +1,135 @@
+
+
+
+
+			// Grava Registros
+		function DBCreate($table, array $data, $insertId = false){
+		$table 	= DB_PREFIX.'_'.$table;
+		$data 	= DBEscape($data);
+		
+		$fields	= implode(', ', array_keys($data));
+		$values = "'".implode("', '", $data)."'";
+		
+		$query 	= "INSERT INTO {$table} ( {$fields} ) VALUES ( {$values} )";
+		
+		return DBExe($query, $insertId);
+	}
+	
+
+
+	// Executa Querys
+	function DBExe($query){
+		$link 	= DBConnect();
+		$result = @mysqli_query($link, $query) or die(mysqli_error($link));
+
+		
+		DBClose($link);
+		return $result;
+	}
+
+	// Protege contra SQL Injection
+	function DBEscape($data){
+		$link = DBConnect();
+		
+		if(!is_array($data))
+			$data = mysqli_real_escape_string($link, $data);
+		else {
+			$arr = $data;
+			
+			foreach ($arr as $key => $value){
+				$key 	= DBEscape( $key );
+				$value	= DBEscape( $value );
+				
+				$data[$key] = $value;
+			}
+		}
+		
+		DBClose($link);
+		return $data;
+	}
+
+
+
+
+			//valida form funciona e grava array
+	function ValidFormUser(){
+		if(!!GetPost('send')){
+			$msg      = null;
+
+			$name     = GetPost('name');
+			$mail     = GetPost('mail');
+			$username = GetPost('username');
+			$password = GetPost('password');
+			$confirma = GetPost('confirma');
+			$dados = array('name' => 'Junior',
+						   'mail' => 'junior@thibobinas',
+
+
+				);
+
+			if(empty($name))
+				$msg = ' Informe seu nome!';
+			else if(empty($mail))
+				$msg = ' Informe seu email!';
+			else if(!filter_var($mail, FILTER_VALIDATE_EMAIL))
+				$msg = 'Email Invalido!';
+			else if(empty($username))
+				$msg = ' Informe seu nome de usuario!';
+			else if(empty($password))
+				$msg = ' Informe sua senha';
+			else if(empty($confirma))
+				$msg = ' Confirme sua senha!';
+			else if($password != $confirma)
+				$msg = 'As senha estão diferentes';
+			else{
+
+				$grava = DBCreate('users',$dados);
+
+				var_dump($grava);
+				
+			}
+
+			echo ($msg != null) ? $msg.'<hr>' : null;
+		}
+	}
+
+
+
+
+
+
+	function ValidFormUser(){
+
+		if( isset( $_POST['send'])){
+
+			$dados['name'] 			= $_POST['name'];
+			$dados['mail'] 			= $_POST['mail'];
+			$dados['username'] 		= $_POST['username'];
+			$dados['password']  	= $_POST['password'];
+			$dados['confirma']  	= $_POST['confirma'];
+
+			var_dump($dados);
+
+			echo "<hr>";
+		
+
+
+
+	};
+
+
+
+			if( isset( $_POST['send'])){
+
+			$dados['name'] 			= $_POST['name'];
+			$dados['mail'] 			= $_POST['mail'];
+			$dados['username'] 		= $_POST['username'];
+			$dados['password']  	= $_POST['password'];
+			$dados['confirma']  	= $_POST['confirma'];
+
+
+
+
+
+
+

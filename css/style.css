@@ -1,0 +1,313 @@
+@import url("http://fonts.googleapis.com/css?family=Open+Sans:600");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  background: #f1f1f1;
+  color: #2c3e50;
+  font: 14px/1 'Open Sans', sans-serif;
+}
+
+/*------------------------------*\
+    Grid System
+\*------------------------------*/
+
+@charset "utf-8";
+.linha,
+div[class^="coluna"] {
+  box-sizing: border-box;
+}
+
+.linha:before,
+.linha:after {
+  content: " ";
+  display: table;
+}
+
+.linha:after {
+  clear: both;
+}
+
+.linha:last-child {
+  margin-bottom: 0;
+}
+
+div[class^="coluna"] {
+  position: relative;
+  float: left;
+  display: block;
+  margin-bottom: 20px;
+  min-height: 35px;
+  background: #fff;
+  box-shadow: 0 3px 2px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 15px;
+}
+
+div[class^="coluna"] + div[class^="coluna"] {
+  margin-left: 1.6%;
+}
+
+
+.coluna-1 {
+  width: 6.86666666667%;
+}
+
+.coluna-2 {
+  width: 15.3333333333%;
+}
+
+.coluna-3 {
+  width: 23.8%;
+}
+
+.coluna-4 {
+  width: 32.2666666667%;
+}
+
+.coluna-5 {
+  width: 40.7333333333%;
+}
+
+.coluna-6 {
+  width: 49.2%;
+}
+
+.coluna-7 {
+  width: 57.6666666667%;
+}
+
+.coluna-8 {
+  width: 66.1333333333%;
+}
+
+.coluna-9 {
+  width: 74.6%;
+}
+
+.coluna-10 {
+  width: 83.0666666667%;
+}
+
+.coluna-11 {
+  width: 91.5333333333%;
+}
+
+.coluna-12 {
+  width: 100%;
+  margin-left: 0;
+}
+
+@media only screen and (max-width: 641px) {
+  .linha:before, .linha:after {
+    display: none;
+  }
+  div[class^="coluna"] {
+    float: none;
+    width: auto;
+    margin-bottom: 10px !important;
+  }
+  div[class^="coluna"] + div[class^="coluna"] {
+    margin-left: 0;
+  }
+  .linha {
+    margin-bottom: 0 !important;
+    margin: 0 0 !important;
+  }
+  .linha:last-child div[class^="coluna"]:last-child {
+    margin-bottom: 0 !important;
+  }
+}
+/*------------------------------*\
+    Styling
+\*------------------------------*/
+
+p {
+  font: 12px/1 'Open Sans', sans-serif;
+  color: #777;
+}
+
+.container {
+  margin: 20px auto;
+}
+
+.container:before,
+.container:after {
+  content: " ";
+  display: table;
+}
+
+.container:after {
+  clear: both;
+}
+
+.no-back {
+  background-color: #f1f1f1 !important;
+  /* definir conforme o seu background */
+}
+
+.no-margin {
+  margin-right: 0;
+}
+
+.no-space {
+  margin-bottom: 0;
+}
+
+.txt-l {
+  text-align: left;
+}
+
+.txt-r {
+  text-align: right;
+}
+/*------------------------------*\
+    Style Nav
+\*------------------------------*/
+
+nav ul {
+  padding: 0px;
+  margin: 0px;
+  list-style: none;
+  float: right;
+}
+
+nav ul li {
+  display: inline;
+}
+
+nav ul li a {
+  padding: 10px 15px;
+  display: inline-block;
+  /* visual do link */
+  
+  background-color: #EDEDED;
+  color: #333;
+  text-decoration: none;
+  border-bottom: 3px solid #EDEDED;
+}
+
+nav ul li a:hover {
+  background-color: #D6D6D6;
+  color: #6D6D6D;
+  border-bottom: 3px solid #7f8c8d;
+}
+
+@media all and (max-width: 641px) {
+  .no-mobile {
+    display: none;
+  }
+  nav ul {
+    float: none;
+  }
+  nav ul li {
+    display: block;
+    margin-bottom: 2px;
+  }
+  
+    nav ul li:last-child {
+    margin-bottom: 0px;
+  }
+  
+  nav ul li a {
+    width: 100%;
+  }
+}
+
+@media all and (min-width: 641px) {
+  .container {
+    padding: 0 20px;
+    background-color: #e1e1e1;
+    padding-top: 20px;
+    border-radius: 5px;
+  }
+  @media all and (min-width: 1025px) {
+    .container {
+      max-width: 1025px;
+    }
+  }
+  
+  
+  input {
+  width: 100%;
+  padding: 0px 0px 0px 10px;
+  margin: 10px 0px;
+  height: 34px;
+  font-size: 14px;
+  line-height: 1.428571429;
+  color: #555555;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+}
+  select {
+  width: 100%;
+  padding: 0px 0px 0px 5px;
+  margin: 10px -2px;
+  height: 34px;
+  font-size: 14px;
+  line-height: 1.428571429;
+  color: #555555;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+}
+  
+  label {
+  display: block;
+  text-align: left;
+  font-weight: bold;
+}
+  
+  h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 700;
+}
+  
+  h1 {
+  font-size: 38px;
+  line-height: 44px;
+  font-weight: 700;
+  text-align: center;
+}
+  
+  button{
+  position: relative;
+  vertical-align: top;
+  width: 150px;
+  height: 50px;
+  padding: 0;
+  margin:20px;
+  font-size: 22px;
+  color: white;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  background: #27ae60;
+  border: 0;
+  border-bottom: 2px solid #219d55;
+  cursor: pointer;
+  -webkit-box-shadow: inset 0 -2px #219d55;
+  box-shadow: inset 0 -2px #219d55;
+    
+  }
+  
+button:active {
+  top: 1px;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+  
+  
+  .login{
+    width: 375px;
+  }
+  
+  .clogin{
+    padding:30px !important;
+  }
